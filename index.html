@@ -1,0 +1,273 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bistro Bliss</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link rel="icon" href="logo.jpeg">
+        <script src="https://kit.fontawesome.com/7edc41b9b3.js" crossorigin="anonymous"></script>
+        <style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #000;
+    color: #fff;
+}
+
+header {
+    background-color: #1a1a1a;
+    border-bottom: 1px solid #333;
+}
+
+.contact-info {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 10px;
+    background-color: #222;
+    font-size: 0.9em;
+    color: #ccc;
+}
+
+.contact-info span {
+    margin: 0 15px;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 5%;
+}
+
+nav .logo {
+    height: 40px;
+    margin-right: 15px;
+}
+
+nav h2 {
+    font-family: 'Brush Script MT', cursive;
+    font-size: 1.8em;
+    margin: 0;
+    color: #f76c6c;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li button {
+    font-weight: 600;
+    background-color: transparent;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+nav ul li button a {
+    text-decoration: none;
+    color: inherit;
+}
+
+nav ul li button:hover {
+    background-color: #f76c6c;
+    color: #000;
+}
+
+.hero {
+    position: relative;
+    text-align: center;
+    color: #fff;
+    padding: 100px 5%;
+    background: 
+        linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+        url('food.jpeg');
+    background-size: cover;
+    background-position: center;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(255, 0, 0, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(0, 255, 255, 0.1) 0%, transparent 50%);
+    z-index: 1;
+}
+
+.hero-text {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+}
+
+.hero-text h1 {
+    font-size: 4em;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 30px;
+    background: linear-gradient(45deg, #f76c6c, #00ffff);
+    -webkit-background-clip : text;
+    -webkit-text-fill-color: transparent;
+    animation: textGlow 5s infinite alternate;
+}
+
+@keyframes textGlow {
+    0% { text-shadow: 0 0 10px rgba(247, 108, 108, 0.5); }
+    100% { text-shadow: 0 0 20px rgba(0, 255, 255, 0.8); }
+}
+
+.hero-text p {
+    font-size: 1.3em;
+    max-width: 600px;
+    margin: 0 auto 40px;
+    line-height: 1.8;
+    color: #f8e9a1;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.hero-buttons .btn {
+    background: rgba(255,255,255,0.1);
+    border-radius: 50px;
+    padding: 15px 30px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-buttons .btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: conic-gradient(
+        from 0deg at 50% 50%,
+        rgba(255, 0, 212, 0.7) 0deg,
+        rgba(255, 0, 162, 0.7) 90deg,
+        rgba(255, 0, 217, 0.7) 180deg,
+        rgba(255, 0, 195, 0.7) 270deg
+    );
+    opacity: 0;
+    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    z-index: -1;
+    transform: scale(1.1);
+    filter: blur(15px);
+}
+
+.hero-buttons .btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
+
+.hero-buttons .btn:hover::before {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.hero-buttons .btn.red {
+    background-color: rgba(247, 108, 108, 0.7);
+}
+
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav ul {
+        margin-top: 15px;
+    }
+
+    .hero-text h1 {
+        font-size: 2.5em;
+    }
+
+    .hero-text p {
+        font-size: 1em;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-text h1,
+.hero-text p,
+.hero-buttons {
+    animation: fadeIn 1s ease-out forwards;
+}
+
+.hero-text h1 { animation-delay: 0.2s; }
+.hero-text p { animation-delay: 0.4s; }
+.hero-buttons { animation-delay: 0.6s; }
+        </style>
+    </head>
+    <body>
+        <header>
+            <div class="contact-info">
+                <span><i class="fa-solid fa-phone"></i> 9080756132</span>
+                <span><i class="fa-solid fa-envelope"></i> Bistrobliss@gmail.com</span>
+            </div>
+            <nav>
+                <div style="display: flex; align-items: center;">
+                    <img src="logo.jpeg" alt="Bistro Bliss Logo" class="logo">
+                    <h2>BISTRO BLISS</h2>
+                </div>
+                <ul>
+                    <li><button class="active"><a href="index.html">Home</a></button></li>
+                    <li><button class="active"><a href="about.html">About</a></button></li>
+                    <li><button class="active"><a href="contact.html">Contact</a></button></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <section class="hero">
+                <div class="hero-text">
+                    <h1>Best food for your taste</h1>
+                    <p>Discover delectable cuisine and unforgettable moments in our welcoming, culinary haven.</p>
+                    <div class="hero-buttons">
+                        <a href="booking.html" class="btn red">Book A Table</a>
+                        <a href="menu.html  " class="btn">Explore Menu</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </body>
+    </html>

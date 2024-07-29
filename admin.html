@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Booking Requests</title>
+    <script>
+    function loadBookings() {
+        fetch('https://your-server.com/api/bookings')
+            .then(response => response.json())
+            .then(bookings => {
+                const bookingsList = document.getElementById('bookingsList');
+                bookingsList.innerHTML = '';
+                bookings.forEach(booking => {
+                    const li = document.createElement('li');
+                    li.textContent = `${booking.name} - ${booking.date} ${booking.time} - ${booking.guests} guests`;
+                    const acceptBtn = document.createElement('button');
+                    acceptBtn.textContent = 'Accept';
+                    acceptBtn.onclick = () => updateBooking(booking.id, 'accepted');
+                    const rejectBtn = document.createElement('button');
+                    rejectBtn.textContent = 'Reject';
+                    rejectBtn.onclick = () => updateBooking(booking.id, 'rejected');
+                    li.appendChild(acceptBtn);
+                    li.appendChild(rejectBtn);
+                    bookingsList.appendChild(li);
+                });
+            });
+    }
+
+    function updateBooking(id, status) {
+        fetch(`https://your-server.com/api/bookings/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ status }),
+        })
+        .then(() => loadBookings());
+    }
+
+    document.addEventListener('DOMContentLoaded', loadBookings);
+    </script>
+</head>
+<body>
+    <h1>Booking Requests</h1>
+    <ul id="bookingsList"></ul>
+</body>
+</html>
